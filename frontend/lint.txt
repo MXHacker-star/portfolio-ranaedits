@@ -1,0 +1,169 @@
+
+> frontend@0.1.0 lint
+> eslint
+
+
+C:\Users\mia84\OneDrive\Desktop\portfolio\frontend\src\app\graphic-design\page.tsx
+  117:29   warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  161:33   warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  175:116  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`                                                                                                                                                                                                                          react/no-unescaped-entities
+
+C:\Users\mia84\OneDrive\Desktop\portfolio\frontend\src\app\results\page.tsx
+   7:22  warning  'Play' is defined but never used                                 @typescript-eslint/no-unused-vars
+  66:35  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\mia84\OneDrive\Desktop\portfolio\frontend\src\components\forms\ContactForm.tsx
+  29:40  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\mia84\OneDrive\Desktop\portfolio\frontend\src\components\sections\AboutSection.tsx
+  21:39  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  25:47  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\mia84\OneDrive\Desktop\portfolio\frontend\src\components\sections\CallToActionSection.tsx
+  27:56  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  27:71  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\mia84\OneDrive\Desktop\portfolio\frontend\src\components\sections\ClientLogosSection.tsx
+   3:10  warning  'motion' is defined but never used                                                                                                                                                                                                                                                       @typescript-eslint/no-unused-vars
+  33:29  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\mia84\OneDrive\Desktop\portfolio\frontend\src\components\sections\GraphicDesignPreview.tsx
+   83:33  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  130:33  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\mia84\OneDrive\Desktop\portfolio\frontend\src\components\sections\ServicesSection.tsx
+  36:31  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\mia84\OneDrive\Desktop\portfolio\frontend\src\components\sections\ShowreelSection.tsx
+    4:18  warning  'AnimatePresence' is defined but never used                                                                                                                                                                                                                                              @typescript-eslint/no-unused-vars
+  143:49  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\mia84\OneDrive\Desktop\portfolio\frontend\src\components\sections\TeamSection.tsx
+   4:10  warning  'motion' is defined but never used                                                                                                                                                                                                                                                       @typescript-eslint/no-unused-vars
+  71:29  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\mia84\OneDrive\Desktop\portfolio\frontend\src\components\sections\TestimonialsSection.tsx
+   4:10  warning  'motion' is defined but never used                               @typescript-eslint/no-unused-vars
+   4:18  warning  'useAnimationControls' is defined but never used                 @typescript-eslint/no-unused-vars
+   6:10  warning  'useEffect' is defined but never used                            @typescript-eslint/no-unused-vars
+  32:36  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\mia84\OneDrive\Desktop\portfolio\frontend\src\components\ui\CursorParticles.tsx
+  16:13  error    'particles' is never reassigned. Use 'const' instead                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   prefer-const
+  42:9   warning  Compilation Skipped: Inline `class` declarations are not supported
+
+Move class declarations outside of components/hooks.
+
+C:\Users\mia84\OneDrive\Desktop\portfolio\frontend\src\components\ui\CursorParticles.tsx:42:9
+  40 |         window.addEventListener("mousemove", handleMouseMove)
+  41 |
+> 42 |         class Particle {
+     |         ^^^^^^^^^^^^^^^^
+> 43 |             x: number
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 44 |             y: number
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 74 |             }
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 75 |         }
+     | ^^^^^^^^^^ Inline `class` declarations are not supported
+  76 |
+  77 |         const animate = () => {
+  78 |             if (!ctx) return
+
+  react-hooks/unsupported-syntax
+
+C:\Users\mia84\OneDrive\Desktop\portfolio\frontend\src\components\ui\HeroParticles.tsx
+   3:10  warning  'useEffect' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        @typescript-eslint/no-unused-vars
+  17:17  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\mia84\OneDrive\Desktop\portfolio\frontend\src\components\ui\HeroParticles.tsx:17:17
+  15 |     const particles = Array.from({ length: 25 }).map((_, i) => ({
+  16 |         id: i,
+> 17 |         top: `${Math.random() * 100}%`,
+     |                 ^^^^^^^^^^^^^ Cannot call impure function
+  18 |         left: `${Math.random() * 100}%`,
+  19 |         size: Math.random() * 3 + 1,
+  20 |         duration: Math.random() * 20 + 10,  react-hooks/purity
+  18:18  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\mia84\OneDrive\Desktop\portfolio\frontend\src\components\ui\HeroParticles.tsx:18:18
+  16 |         id: i,
+  17 |         top: `${Math.random() * 100}%`,
+> 18 |         left: `${Math.random() * 100}%`,
+     |                  ^^^^^^^^^^^^^ Cannot call impure function
+  19 |         size: Math.random() * 3 + 1,
+  20 |         duration: Math.random() * 20 + 10,
+  21 |         delay: Math.random() * 5                                  react-hooks/purity
+  19:15  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\mia84\OneDrive\Desktop\portfolio\frontend\src\components\ui\HeroParticles.tsx:19:15
+  17 |         top: `${Math.random() * 100}%`,
+  18 |         left: `${Math.random() * 100}%`,
+> 19 |         size: Math.random() * 3 + 1,
+     |               ^^^^^^^^^^^^^ Cannot call impure function
+  20 |         duration: Math.random() * 20 + 10,
+  21 |         delay: Math.random() * 5
+  22 |     }))                                            react-hooks/purity
+  20:19  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\mia84\OneDrive\Desktop\portfolio\frontend\src\components\ui\HeroParticles.tsx:20:19
+  18 |         left: `${Math.random() * 100}%`,
+  19 |         size: Math.random() * 3 + 1,
+> 20 |         duration: Math.random() * 20 + 10,
+     |                   ^^^^^^^^^^^^^ Cannot call impure function
+  21 |         delay: Math.random() * 5
+  22 |     }))
+  23 |                                                                                react-hooks/purity
+  21:16  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\mia84\OneDrive\Desktop\portfolio\frontend\src\components\ui\HeroParticles.tsx:21:16
+  19 |         size: Math.random() * 3 + 1,
+  20 |         duration: Math.random() * 20 + 10,
+> 21 |         delay: Math.random() * 5
+     |                ^^^^^^^^^^^^^ Cannot call impure function
+  22 |     }))
+  23 |
+  24 |     return (                                                                                                               react-hooks/purity
+
+C:\Users\mia84\OneDrive\Desktop\portfolio\frontend\src\components\ui\VideoPlayer.tsx
+   6:10  warning  'motion' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             @typescript-eslint/no-unused-vars
+   6:18  warning  'AnimatePresence' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    @typescript-eslint/no-unused-vars
+  14:13  error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\mia84\OneDrive\Desktop\portfolio\frontend\src\components\ui\VideoPlayer.tsx:14:13
+  12 |     useEffect(() => {
+  13 |         if (!isActive) {
+> 14 |             setMuted(true)
+     |             ^^^^^^^^ Avoid calling setState() directly within an effect
+  15 |         }
+  16 |     }, [isActive])
+  17 |  react-hooks/set-state-in-effect
+  38:21  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        @next/next/no-img-element
+
+C:\Users\mia84\OneDrive\Desktop\portfolio\frontend\src\components\ui\input.tsx
+  4:18  error  An interface declaring no members is equivalent to its supertype  @typescript-eslint/no-empty-object-type
+
+C:\Users\mia84\OneDrive\Desktop\portfolio\frontend\src\components\ui\textarea.tsx
+  4:18  error  An interface declaring no members is equivalent to its supertype  @typescript-eslint/no-empty-object-type
+
+✖ 37 problems (18 errors, 19 warnings)
+  1 error and 0 warnings potentially fixable with the `--fix` option.
+

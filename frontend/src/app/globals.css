@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+    /* Offset for fixed navbar + breathing room */
+
+    /* Default to Dark Theme (Cinematic Tech) even if system is light */
+    --background: 0 0% 2%;
+    /* Void Black (#050505) */
+    --foreground: 0 0% 100%;
+    /* Pure White (#FFFFFF) */
+
+    --card: 0 0% 10%;
+    /* Graphite Grey (#1A1A1A) */
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 358 100% 56%;
+    /* Neon Crimson (#FF1E26) */
+    --primary-foreground: 0 0% 100%;
+    /* White */
+
+    --secondary: 0 0% 15%;
+    /* Deep Grey */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 70%;
+    /* Metallic Silver approx */
+
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 358 100% 56%;
+
+    --radius: 0.5rem;
+  }
+
+  /* Cinematic Tech Dark Theme (Redundant but kept for class switching) */
+  .dark {
+    --background: 0 0% 2%;
+    /* Void Black (#050505) */
+    --foreground: 0 0% 100%;
+    /* Pure White (#FFFFFF) */
+
+    --card: 0 0% 10%;
+    /* Graphite Grey (#1A1A1A) */
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 358 100% 56%;
+    /* Neon Crimson (#FF1E26) */
+    --primary-foreground: 0 0% 100%;
+    /* White */
+
+    --secondary: 0 0% 15%;
+    /* Deep Grey */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 70%;
+    /* Metallic Silver approx */
+
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 358 100% 56%;
+  }
+
+  /* Blue Theme - Electric Blue + Deep Dark Background */
+  [data-theme="blue"],
+  .blue {
+    --background: 222 47% 11%;
+    /* Existing Deep Blue */
+    --foreground: 0 0% 100%;
+
+    --card: 217 33% 17%;
+    /* Deep Blue-Grey */
+    --card-foreground: 0 0% 100%;
+
+    --popover: 217 33% 17%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 217 91% 60%;
+    /* Electric Blue (#3B82F6) */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 217 33% 20%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 217 33% 20%;
+    --muted-foreground: 217 20% 70%;
+
+    --accent: 217 33% 20%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 217 33% 25%;
+    --input: 217 33% 25%;
+    --ring: 217 91% 60%;
+  }
+}
+
+@layer utilities {
+  .paused {
+    animation-play-state: paused;
+  }
+
+  .react-player-background video {
+    object-fit: cover;
+  }
+
+  .writing-vertical-rl {
+    writing-mode: vertical-rl;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 20px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--muted-foreground) / 0.5);
+  }
+}
+
+/* TipTap Rich Text Editor Styles */
+.tiptap p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: rgba(255, 255, 255, 0.2);
+  pointer-events: none;
+  height: 0;
+  font-size: 1.125rem;
+}
+
+.tiptap:focus {
+  outline: none;
+}
+
+.tiptap img {
+  cursor: default;
+  border-radius: 0.5rem;
+  max-width: 100%;
+  margin: 1.5rem auto;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, .3);
+  border: 1px solid rgba(255, 255, 255, .1);
+}
+
+.tiptap h1 {
+  font-size: 2em;
+  font-weight: 800;
+  margin: 0.67em 0;
+}
+
+.tiptap h2 {
+  font-size: 1.5em;
+  font-weight: 700;
+  margin: 0.75em 0;
+}
+
+.tiptap h3 {
+  font-size: 1.17em;
+  font-weight: 600;
+  margin: 0.83em 0;
+}
+
+.tiptap ul {
+  list-style-type: disc;
+  padding-left: 1.5em;
+}
+
+.tiptap ol {
+  list-style-type: decimal;
+  padding-left: 1.5em;
+}
+
+.tiptap blockquote {
+  border-left: 3px solid rgba(255, 255, 255, 0.2);
+  padding-left: 1em;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 1em 0;
+}
+
+.tiptap hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 2em 0;
+}
+
+.tiptap p {
+  margin: 0.5em 0;
+}

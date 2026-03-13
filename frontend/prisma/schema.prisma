@@ -1,0 +1,347 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model AdminUser {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model HeroSection {
+  id          Int      @id @default(1) // Singleton
+  heading     String
+  subheading  String
+  videoUrl    String?
+  buttonText  String   @default("View Showreel")
+  buttonLink  String   @default("#showreel")
+  overlayOpacity Int   @default(40)
+  updatedAt   DateTime @updatedAt
+}
+
+model Service {
+  id          String   @id @default(cuid())
+  title       String
+  description String   @db.Text
+  icon        String   // Lucide icon name or image URL
+  link        String?
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model PortfolioCategory {
+  id        String          @id @default(cuid())
+  name      String
+  type      String          // "video", "graphic", "web"
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+  items     PortfolioItem[]
+}
+
+model PortfolioItem {
+  id          String             @id @default(cuid())
+  title       String
+  description String?            @db.Text  // Used by web projects
+  category    String?            // Keeping for backward compatibility or direct string usage
+  categoryId  String?
+  portfolioCategory PortfolioCategory? @relation(fields: [categoryId], references: [id])
+  subCategory String?            // "Reels", "Long Form", "Thumbnail"
+  type        String             // "video", "image", "web"
+  thumbnail   String?
+  mediaUrl    String             // YouTube ID, Image URL, or Screenshot URL
+  orientation String             @default("horizontal") // "horizontal", "vertical"
+  featured    Boolean            @default(false)
+  isSuccessStory Boolean         @default(false)
+  stack       String?            // Comma-separated tech stack (web projects), e.g. "Next.js,React,Tailwind"
+  liveUrl     String?            // Live site URL (web projects)
+  repoUrl     String?            // GitHub repo URL (web projects)
+  order       Int                @default(0)
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+}
+
+model Testimonial {
+  id          String   @id @default(cuid())
+  name        String
+  role        String
+  content     String?  @db.Text
+  rating      Int      @default(5)
+  videoUrl    String?  // YouTube ID if video testimonial
+  avatarUrl   String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model TeamMember {
+  id          String   @id @default(cuid())
+  name        String
+  role        String
+  imageUrl    String
+  bio         String?
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model ClientLogo {
+  id          String   @id @default(cuid())
+  name        String
+  imageUrl    String   // SVG or Image URL
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+}
+
+model GlobalSettings {
+  id              Int      @id @default(1) // Singleton
+  siteName        String   @default("Rana Edits")
+  tagline         String?
+  logoUrl         String?
+  faviconUrl      String?
+  logoType        String   @default("text") // "text", "image"
+  contactEmail    String?
+  contactPhone    String?
+  address         String?  @db.Text
+  socialFacebook  String?
+  socialInstagram String?
+  socialYoutube   String?
+  socialTwitter   String?
+  updatedAt       DateTime @updatedAt
+}
+
+model SocialLink {
+  id        String   @id @default(cuid())
+  platform  String   // e.g. "LinkedIn", "TikTok"
+  url       String
+  icon      String   // Maps to Lucide icon name (e.g. "Linkedin", "Music2")
+  isActive  Boolean  @default(true)
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ... existing models ...
+
+// --- Extended Features (Phase 4) ---
+
+model BlogPost {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  content     String   @db.LongText // Rich text content
+  excerpt     String?  @db.Text
+  coverImage  String?
+  author      String?  @default("Admin")
+  tags        Json?    // Array of strings
+  published   Boolean  @default(false)
+  featured    Boolean  @default(false)
+  metaTitle   String?
+  metaDesc    String?  @db.Text
+  keywords    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model ClientReview {
+  id          String   @id @default(cuid())
+  clientName  String
+  companyName String?
+  reviewText  String   @db.Text
+  rating      Int      @default(5)
+  avatarUrl   String?
+  category    String?
+  visible     Boolean  @default(true)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model MenuLink {
+  id          String     @id @default(cuid())
+  label       String
+  path        String
+  type        String     @default("header") // header, footer, both
+  order       Int        @default(0)
+  
+  // Advanced Menu Features
+  isActive    Boolean    @default(true) // For quick visibility toggle (replaces old 'visible')
+  isExternal  Boolean    @default(false) // For 'Open in New Tab' (_blank)
+  icon        String?    // Optional Lucide icon name
+
+  // For Sub-menus (Hierarchy)
+  parentId    String?
+  parent      MenuLink?  @relation("MenuHierarchy", fields: [parentId], references: [id], onDelete: Cascade)
+  children    MenuLink[] @relation("MenuHierarchy")
+
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model StatItem {
+  id        String   @id @default(cuid())
+  label     String
+  value     String
+  icon      String?
+  section   String   @default("results")  // "results" | "about" | "results_page"
+  order     Int      @default(0)
+  visible   Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model CaseStudy {
+  id          String   @id @default(cuid())
+  title       String
+  views       String
+  description String   @db.Text
+  youtubeId   String
+  order       Int      @default(0)
+  visible     Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Package {
+  id          String   @id @default(cuid())
+  name        String
+  price       String
+  description String?
+  features    Json     // Store as array of strings
+  isPopular   Boolean  @default(false)
+  ctaText     String?  @default("Get Started")
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// Generic key-value store for singleton sections (About, Showreel, CTA identifiers)
+model SectionContent {
+  id         String   @id @default(cuid())
+  section    String   @unique // e.g. "about", "showreel", "home_cta", "video_cta", "graphic_cta"
+  title      String?
+  subtitle   String?  @db.Text
+  content    String?  @db.Text
+  mediaUrl   String?
+  buttonText String?
+  buttonLink String?
+  settings   Json?    // Extra config specific to section
+  updatedAt  DateTime @updatedAt
+}
+
+model SEOConfig {
+  id              Int      @id @default(1) // Singleton
+  metaTitle       String?
+  metaDesc        String?  @db.Text
+  keywords        String?
+  ogImage         String?
+  
+  // Advanced RankMath Style Fields
+  focusKeyword    String?
+  robotsIndex     Boolean  @default(true)
+  robotsFollow    Boolean  @default(true)
+  canonicalUrl    String?
+  twitterCard     String   @default("summary_large_image")
+  twitterTitle    String?
+  twitterDesc     String?  @db.Text
+  twitterImage    String?
+  ogTitle         String?
+  ogDesc          String?  @db.Text
+  schemaType      String   @default("Organization") // "Organization", "Person", "None"
+  
+  scripts         String?  @db.Text
+  updatedAt       DateTime @updatedAt
+}
+
+model FAQ {
+  id        String   @id @default(cuid())
+  question  String
+  answer    String   @db.Text
+  category  String?
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model WebProject {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  description String   @db.Text
+  client      String?
+  techStack   Json     // Array of strings: ["React", "Next.js", "Tailwind"]
+  liveUrl     String?
+  repoUrl     String?
+  thumbnail   String?
+  images      Json?    // Array of strings (Gallery)
+  features    Json?    // Array of strings (Key features)
+  isFeatured  Boolean  @default(false)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// CTA Form Submissions (Lead Collection)
+model FormSubmission {
+  id            String   @id @default(cuid())
+
+  // Form identification
+  formType      String   // consultancy | proposal | package | video-project | graphic-project | contact
+  source        String?  // Where the form was triggered (hero, packages-page, footer, etc.)
+
+  // Common contact fields
+  name          String
+  email         String
+  phone         String?
+  whatsapp      String?
+  company       String?
+  message       String?  @db.Text
+
+  // Form-specific data (JSON for flexibility)
+  metadata      Json?
+
+  // Lead management
+  status        String   @default("new")
+  priority      String   @default("normal")
+  adminNotes    String?  @db.Text
+
+  // Scheduling (for consultancy forms)
+  scheduledDate DateTime?
+  scheduledTime String?
+
+  // Timestamps
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  respondedAt   DateTime?
+
+  @@index([formType])
+  @@index([status])
+  @@index([createdAt])
+}
+
+// ... existing models ...
+
+model NotificationSetting {
+  id              Int      @id @default(1) // Singleton
+  emailEnabled    Boolean  @default(false)
+  smtpHost        String?
+  smtpPort        Int      @default(587)
+  smtpUser        String?
+  smtpPass        String?
+  adminEmail      String?
+  
+  // Per-form toggles (JSON array of enabled form types)
+  enabledForms    Json     @default("[\"consultancy\",\"proposal\",\"package\",\"video-project\",\"graphic-project\",\"contact\",\"terminal\"]")
+  
+  updatedAt       DateTime @updatedAt
+}
